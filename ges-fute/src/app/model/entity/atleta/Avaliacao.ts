@@ -1,45 +1,47 @@
-import { Usuario } from '../Usuario';
+import { IUsuario } from '../Usuario';
+import * as mongoose from 'mongoose';
 
-abstract class Avaliacao {
-    id: number;
+interface IAvaliacao extends mongoose.Document{
+    _id: mongoose.Types.ObjectId;
     data: Date;
-    responsavel: Usuario;
-    peso: number;
-
-    constructor(id: number, data: Date, responsavel: Usuario, peso: number){
-        this.id = id;
-        this.data = data;
-        this.responsavel = responsavel;
-    }
+    responsavel: IUsuario;
+    peso: Number;
 }
 
-export class AvaliacaoDesempenho extends Avaliacao{
-    tempoJogo: number;
-    percentualGordura: number;
-    velocidadeMedia: number;
-
-    constructor(id: number, data: Date, responsavel: Usuario, peso: number, 
-                   tempoJogo: number, percentualGordura: number, velocidadeMedia: number){
-        super(id, data, responsavel, peso);
-        this.tempoJogo = tempoJogo;
-        this.percentualGordura = percentualGordura;
-        this.velocidadeMedia = velocidadeMedia;
-    }
+//Avaliacao Desempenho
+export interface IAvaliacaoDesempenho extends IAvaliacao{
+    tempoJogo: Number;
+    percentualGordura: Number;
+    velocidadeMedia: Number;
 }
 
-export class AvaliacaoMedica extends Avaliacao{
-    temperaturaCorporal: number;
-    pressao: number;
-    batimentosCardiacos: number;
-    lesao: string;
+var avaliacaoDesempenhoSchema = new mongoose.Schema({
+    data: { type: Date, required: true},
+    responsavel: {type: mongoose.Types.ObjectId, ref: 'Usuario'},
+    peso: { type: Number, required: true },
+    tempoJogo: { type: Number, required: true },
+    percentualGordura: { type: Number, required: true },
+    velocidadeMedia: { type: Number, required: true }
+});
 
-    constructor(id: number, data: Date, responsavel: Usuario, peso: number, 
-        temperaturaCorporal: number, pressao: number, batimentosCardiacos: number,
-        lesao: string){
-        super(id, data, responsavel, peso);
-        this.temperaturaCorporal = temperaturaCorporal;
-        this.pressao = pressao;
-        this.batimentosCardiacos = batimentosCardiacos;
-        this.lesao = lesao;
-    }
+export var AvaliacaoDesempenho = mongoose.model<IAvaliacaoDesempenho>('AvaliacaoDesempenho', avaliacaoDesempenhoSchema);
+
+// AvaliacaoMedica
+export interface IAvaliacaoMedica extends IAvaliacao{
+    temperaturaCorporal: Number;
+    pressao: Number;
+    batimentosCardiacos: Number;
+    lesao: String;
 }
+
+var avaliacaoMedicaSchema = new mongoose.Schema({
+    data: { type: Date, required: true},
+    responsavel: {type: mongoose.Types.ObjectId, ref: 'Usuario'},
+    peso: { type: Number, required: true },
+    temperaturaCorporal: { type: Number, required: true },
+    pressao: { type: Number, required: true },
+    batimentosCardiacos: { type: Number, required: true },
+    lesao: { type: String, required: true },
+});
+
+export var AvaliacaoMedica = mongoose.model<IAvaliacaoMedica>('AvaliacaoMedica', avaliacaoMedicaSchema);
