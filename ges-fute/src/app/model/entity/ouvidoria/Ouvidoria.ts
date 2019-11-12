@@ -5,7 +5,8 @@ export interface IChamado extends mongoose.Document {
     _id: mongoose.Types.ObjectId;
     descricao: String;
     prioridade: Number;
-    localizacao: String;
+    tipo: String;
+    localizacao: String;    
     anonimato: Boolean;
     usuario: IUsuario;
 }
@@ -13,6 +14,7 @@ export interface IChamado extends mongoose.Document {
 let chamadoSchema = new mongoose.Schema ({
     descricao: { type: String, required: true },
     prioridade: { type: Number, enum: [1, 2, 3, 4, 5], required: true },
+    tipo: { tyé: String, enum: ['Dúvida', 'Problema', 'Denúncia'], required: true},
     localizacao: { type: String },
     anonimato: { type: Boolean },
     usuario: { type: mongoose.Schema.Types.ObjectId, ref: 'Usuario' }
