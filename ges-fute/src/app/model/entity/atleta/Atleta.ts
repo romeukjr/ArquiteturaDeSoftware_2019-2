@@ -14,7 +14,7 @@ export interface IAtleta extends mongoose.Document {
     planosAlimentares: IPlanoAlimentar[];
 }
 
-var atletaSchema = new mongoose.Schema({
+let atletaSchema = new mongoose.Schema({
     nome: { type: String, required: true},
     idade: { type: Number, required: true },
     altura: { type: Number, required: true },
@@ -24,4 +24,4 @@ var atletaSchema = new mongoose.Schema({
     planosAlimentares: [{ type: mongoose.Schema.Types.ObjectId, ref: 'PlanoAlimentar'}]
 });
 
-export var Atleta = mongoose.model<IAtleta>('Atleta', atletaSchema);
+export let Atleta = mongoose.model<IAtleta>('Atleta', atletaSchema);

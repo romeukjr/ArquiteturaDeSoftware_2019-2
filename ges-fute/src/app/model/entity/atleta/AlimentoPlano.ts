@@ -9,7 +9,7 @@ export interface IAlimentoPlano extends mongoose.Document{
     unidadeMedida: String;
 }
 
-var alimentoPlanoSchema = new mongoose.Schema({
+let alimentoPlanoSchema = new mongoose.Schema({
     alimento: { type: String, required: true},
     horaAlimento: { type: Number, required: true},
     minutoAlimento: { type: Number, required: true},
@@ -17,4 +17,4 @@ var alimentoPlanoSchema = new mongoose.Schema({
     unidadeMedida: { type: String, required: true}
 });
 
-export var AlimentoPlano = mongoose.model<IAlimentoPlano>('AlimentoPlano', alimentoPlanoSchema);
+export let AlimentoPlano = mongoose.model<IAlimentoPlano>('AlimentoPlano', alimentoPlanoSchema);

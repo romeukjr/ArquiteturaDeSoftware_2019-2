@@ -15,7 +15,7 @@ export interface IAvaliacaoDesempenho extends IAvaliacao{
     velocidadeMedia: Number;
 }
 
-var avaliacaoDesempenhoSchema = new mongoose.Schema({
+let avaliacaoDesempenhoSchema = new mongoose.Schema({
     data: { type: Date, required: true},
     responsavel: {type: mongoose.Types.ObjectId, ref: 'Usuario'},
     peso: { type: Number, required: true },
@@ -24,7 +24,7 @@ var avaliacaoDesempenhoSchema = new mongoose.Schema({
     velocidadeMedia: { type: Number, required: true }
 });
 
-export var AvaliacaoDesempenho = mongoose.model<IAvaliacaoDesempenho>('AvaliacaoDesempenho', avaliacaoDesempenhoSchema);
+export let AvaliacaoDesempenho = mongoose.model<IAvaliacaoDesempenho>('AvaliacaoDesempenho', avaliacaoDesempenhoSchema);
 
 // AvaliacaoMedica
 export interface IAvaliacaoMedica extends IAvaliacao{
@@ -34,7 +34,7 @@ export interface IAvaliacaoMedica extends IAvaliacao{
     lesao: String;
 }
 
-var avaliacaoMedicaSchema = new mongoose.Schema({
+let avaliacaoMedicaSchema = new mongoose.Schema({
     data: { type: Date, required: true},
     responsavel: {type: mongoose.Types.ObjectId, ref: 'Usuario'},
     peso: { type: Number, required: true },
@@ -44,4 +44,4 @@ var avaliacaoMedicaSchema = new mongoose.Schema({
     lesao: { type: String, required: true },
 });
 
-export var AvaliacaoMedica = mongoose.model<IAvaliacaoMedica>('AvaliacaoMedica', avaliacaoMedicaSchema);
+export let AvaliacaoMedica = mongoose.model<IAvaliacaoMedica>('AvaliacaoMedica', avaliacaoMedicaSchema);

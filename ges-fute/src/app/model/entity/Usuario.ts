@@ -12,7 +12,7 @@ export interface IUsuario extends mongoose.Document{
     RG: string;
 }
 
-var usuarioSchema = new mongoose.Schema({
+let usuarioSchema = new mongoose.Schema({
     usuario: { type: String, required: true},
     senha: { type: String, required: true},
     nome: { type: String, required: true},
@@ -23,4 +23,4 @@ var usuarioSchema = new mongoose.Schema({
     RG: { type: String, required: true}
 });
 
-export var Usuario = mongoose.model<IUsuario>('Usuario', usuarioSchema);
+export let Usuario = mongoose.model<IUsuario>('Usuario', usuarioSchema);

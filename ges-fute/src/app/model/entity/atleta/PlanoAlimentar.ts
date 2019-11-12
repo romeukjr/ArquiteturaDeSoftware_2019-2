@@ -14,7 +14,7 @@ export interface IPlanoAlimentar extends mongoose.Document{
     alimentosPlano: IAlimentoPlano[];
 }
 
-var planoAlimentarSchema = new mongoose.Schema({
+let planoAlimentarSchema = new mongoose.Schema({
     dataInicio: { type: Date, required: true },
     dataFim: { type: Date, required: true },
     qtdKCal: { type: Number, required: true},
@@ -26,4 +26,4 @@ var planoAlimentarSchema = new mongoose.Schema({
     alimentosPlano: [{ type: mongoose.Schema.Types.ObjectId, ref: 'AlimentoPlano'}]
 });
 
-export var PlanoAlimentar = mongoose.model<IPlanoAlimentar>('PlanoAlimentar', planoAlimentarSchema);
+export let PlanoAlimentar = mongoose.model<IPlanoAlimentar>('PlanoAlimentar', planoAlimentarSchema);
