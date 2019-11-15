@@ -17,4 +17,13 @@ let alimentoPlanoSchema = new mongoose.Schema({
     unidadeMedida: { type: String, required: true}
 });
 
-export let AlimentoPlano = mongoose.model<IAlimentoPlano>('AlimentoPlano', alimentoPlanoSchema);
+export let AlimentoPlanoModel = mongoose.model<IAlimentoPlano>('AlimentoPlano', alimentoPlanoSchema);
+
+export class AlimentoPlano{
+    _id: mongoose.Types.ObjectId;
+    alimento: String;
+    horaAlimento: Number;
+    minutoAlimento: Number;
+    quantidade: Number;
+    unidadeMedida: String;
+}
