@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IAtleta } from '../model/entity/atleta/Atleta';
-import { AtletaModel } from  '../model/entity/atleta/Atleta';
+import { Atleta } from  '../model/entity/atleta/Atleta';
 import { headersToString } from 'selenium-webdriver/http';
 
 @Component({
@@ -9,7 +9,7 @@ import { headersToString } from 'selenium-webdriver/http';
   styleUrls: ['./list-atleta.component.css']
 })
 export class ListAtletaComponent implements OnInit {
-  atletas: IAtleta[];
+  atletas: Atleta[];
   constructor() { }
 
   ngOnInit() {
@@ -17,9 +17,9 @@ export class ListAtletaComponent implements OnInit {
   }
 
   getAtletas(): void {
-    let atleta: IAtleta
+    let atleta = new Atleta();
 
-    atleta = new AtletaModel({ nome: 'Bruno Führ', idade: 22, altura: 1.8, alergias: 'medicamentos'});
+    atleta.nome = 'teste';
     
     // mocking objects
     this.atletas = [

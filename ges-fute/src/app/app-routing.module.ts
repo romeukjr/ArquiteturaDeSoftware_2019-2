@@ -6,7 +6,7 @@ import { ListAtletaComponent } from './list-atleta/list-atleta.component';
 export const ROUTES: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
   { path: 'dashboard', component: ListAtletaComponent},
-  { path: 'mantain-hero/:id', component: MantainAtletaComponent }
+  { path: 'mantain-atleta/:id', component: MantainAtletaComponent }
 ]
 
 @NgModule({

@@ -2,6 +2,7 @@
 import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { IAtleta } from '../model/entity/atleta/Atleta';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-mantain-atleta',
@@ -10,9 +11,13 @@ import { IAtleta } from '../model/entity/atleta/Atleta';
 })
 export class MantainAtletaComponent implements OnInit {
   @Input() atleta: IAtleta;
-  constructor() { }
+  constructor(private location: Location) { }
 
   ngOnInit() {
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 
 }
