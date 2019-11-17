@@ -1,0 +1,11 @@
+{
+  "name": "gesfute-api",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mongodb": "^3.3.4",
+    "mongoose": "^5.7.11",
+    "morgan": "^1.9.1"
+  }
+}
