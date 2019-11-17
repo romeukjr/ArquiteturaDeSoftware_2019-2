@@ -4,7 +4,6 @@ import { AvaliacaoDesempenhoModel, AvaliacaoMedicaModel } from '../../model/enti
 import { PlanoAlimentarModel } from '../../model/entity/atleta/PlanoAlimentar';
 import { AtletaModel } from '../../model/entity/atleta/Atleta';
 import { DBService } from './db.service';
-import * as RouteService from '../route.service';
 import constants from '../../util/constants';
 
 @Injectable({
