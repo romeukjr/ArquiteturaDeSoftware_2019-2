@@ -26,13 +26,13 @@ Para executar a aplicação, são necessários 4 terminais:
 ### How-to 
 
   1. Abrir um terminal (em qualquer diretório) e rodar:
-    > mongod
+> mongod
   2. Abrir um terminal (em qualquer diretório) e rodar:
-    > mongo
+> mongo
   3. Abrir um terminal no diretório `<path_to_project>/ges-fute/backend` e rodar:
-    > node server.js
-  4. Abrir um terminal no diretório `<path_to_project>/ges-fute/backend` e rodar
-    > ng serve"
+> node server.js
+  4. Abrir um terminal no diretório `<path_to_project>/ges-fute/backend` e rodar:
+> ng serve"
 
  - URL do Banco de Dados: `mongodb://localhost:27017/gesfute_backend`;
  - URL da API: `http://localhost:8080/api`;
