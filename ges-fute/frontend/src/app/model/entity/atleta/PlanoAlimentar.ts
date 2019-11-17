@@ -1,5 +1,5 @@
 import * as mongoose from 'mongoose';
-import { IAlimentoPlano } from './AlimentoPlano';
+import { IAlimentoPlano, AlimentoPlano } from './AlimentoPlano';
 
 export interface IPlanoAlimentar extends mongoose.Document{
     _id: mongoose.Types.ObjectId;
@@ -26,4 +26,17 @@ let planoAlimentarSchema = new mongoose.Schema({
     alimentosPlano: [{ type: mongoose.Schema.Types.ObjectId, ref: 'AlimentoPlano'}]
 });
 
-export let PlanoAlimentar = mongoose.model<IPlanoAlimentar>('PlanoAlimentar', planoAlimentarSchema);
+export let PlanoAlimentarModel = mongoose.model<IPlanoAlimentar>('PlanoAlimentar', planoAlimentarSchema);
+
+export class PlanoAlimentar {
+    _id: mongoose.Types.ObjectId;
+    dataInicio: Date;
+    dataFim: Date;
+    qtdKCal: number;
+    qtdProteinas: number;
+    qtdGordura: number;
+    qtdAminoacidos: number;
+    qtdMicronutrientes: number;
+    qtdMacronutrientes: number;
+    alimentosPlano: AlimentoPlano[];
+}

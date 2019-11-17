@@ -1,4 +1,5 @@
-import { IUsuario } from '../Usuario';
+import { IUsuario, Usuario } from '../Usuario';
+
 import * as mongoose from 'mongoose';
 
 interface IAvaliacao extends mongoose.Document{
@@ -24,7 +25,7 @@ let avaliacaoDesempenhoSchema = new mongoose.Schema({
     velocidadeMedia: { type: Number, required: true }
 });
 
-export let AvaliacaoDesempenho = mongoose.model<IAvaliacaoDesempenho>('AvaliacaoDesempenho', avaliacaoDesempenhoSchema);
+export let AvaliacaoDesempenhoModel = mongoose.model<IAvaliacaoDesempenho>('AvaliacaoDesempenho', avaliacaoDesempenhoSchema);
 
 // AvaliacaoMedica
 export interface IAvaliacaoMedica extends IAvaliacao{
@@ -44,4 +45,25 @@ let avaliacaoMedicaSchema = new mongoose.Schema({
     lesao: { type: String, required: true },
 });
 
-export let AvaliacaoMedica = mongoose.model<IAvaliacaoMedica>('AvaliacaoMedica', avaliacaoMedicaSchema);
+export let AvaliacaoMedicaModel = mongoose.model<IAvaliacaoMedica>('AvaliacaoMedica', avaliacaoMedicaSchema);
+
+
+// classes
+class Avaliacao{
+    _id: mongoose.Types.ObjectId;
+    data: Date;
+    //responsavel: Usuario;
+    peso: Number;
+}
+export class AvaliacaoDesempenho extends Avaliacao{
+    tempoJogo: Number;
+    percentualGordura: Number;
+    velocidadeMedia: Number;
+}
+
+export class AvaliacaoMedica extends Avaliacao{
+    temperaturaCorporal: Number;
+    pressao: Number;
+    batimentosCardiacos: Number;
+    lesao: String;
+}

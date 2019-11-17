@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import constants from './util/constants'
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'ges-fute';
+  title = constants.APP.TITLE;
+
+  ngOnInit() {
+  }
 }

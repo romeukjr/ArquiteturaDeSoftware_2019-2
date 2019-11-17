@@ -1,6 +1,5 @@
-import { IAvaliacaoMedica } from './Avaliacao';
-import { IAvaliacaoDesempenho } from './Avaliacao';
-import { IPlanoAlimentar } from './PlanoAlimentar';
+import { IAvaliacaoDesempenho, AvaliacaoDesempenho, IAvaliacaoMedica, AvaliacaoMedica } from './Avaliacao';
+import { IPlanoAlimentar, PlanoAlimentar } from './PlanoAlimentar';
 import * as mongoose from 'mongoose';
 
 export interface IAtleta extends mongoose.Document {
@@ -24,4 +23,15 @@ let atletaSchema = new mongoose.Schema({
     planosAlimentares: [{ type: mongoose.Schema.Types.ObjectId, ref: 'PlanoAlimentar'}]
 });
 
-export let Atleta = mongoose.model<IAtleta>('Atleta', atletaSchema);
+export let AtletaModel = mongoose.model<IAtleta>('Atleta', atletaSchema);
+
+export class Atleta  {
+    _id: mongoose.Types.ObjectId;
+    nome: String;
+    idade: Number;
+    altura: Number;
+    alergias: String;
+    avaliacoesMedicas: AvaliacaoMedica[];
+    avaliacoesDesempenho: AvaliacaoDesempenho[];
+    planosAlimentares: PlanoAlimentar[];
+}
