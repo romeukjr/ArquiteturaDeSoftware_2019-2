@@ -1,23 +1,36 @@
-import * as mongoose from 'mongoose';
-import { IUsuario } from '../Usuario';
+import { Usuario } from '../Usuario';
+import { Entity } from '../../entity';
 
-export interface IChamado extends mongoose.Document {
-    _id: mongoose.Types.ObjectId;
+// ao exportar JSON colocar tipo para identificar o tipo do chamado
+
+abstract class Chamado extends Entity {
     descricao: String;
     prioridade: Number;
-    tipo: String;
-    localizacao: String;    
-    anonimato: Boolean;
-    usuario: IUsuario;
+    usuario: Usuario;
+
+    constructor (descricao: String, prioridade: Number){
+        super();
+        this.descricao = descricao;
+        this.prioridade = prioridade;
+    }
 }
 
-let chamadoSchema = new mongoose.Schema ({
-    descricao: { type: String, required: true },
-    prioridade: { type: Number, enum: [1, 2, 3, 4, 5], required: true },
-    tipo: { type: String, enum: ['Dúvida', 'Problema', 'Denúncia'], required: true},
-    localizacao: { type: String },
-    anonimato: { type: Boolean },
-    usuario: { type: mongoose.Schema.Types.ObjectId, ref: 'Usuario' }
-});
+export class Duvida extends Chamado {
 
-export let Chamado = mongoose.model<IChamado>('Chamado', chamadoSchema);
+}
+
+export class Problema extends Chamado{
+    localizacao: String;
+    constructor (descricao: String, prioridade: Number, localizacao: String){
+        super(descricao, prioridade);
+        this.localizacao = localizacao;
+    }
+}
+
+export class Denuncia extends Chamado {
+    anonimato: Boolean;
+    constructor (descricao: String, prioridade: Number, anonimato: Boolean){
+        super(descricao, prioridade)
+        this.anonimato = anonimato;
+    }
+}

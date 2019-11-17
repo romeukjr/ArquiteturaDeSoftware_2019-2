@@ -1,28 +1,26 @@
-import { IAtleta } from '../atleta/Atleta';
-import { IAdvogado } from './Advogado';
-import * as mongoose from 'mongoose';
+import { Atleta } from '../atleta/Atleta';
+import { Advogado } from './Advogado';
+import { Entity } from '../../entity';
 
-export interface IContrato extends mongoose.Document {
-    _id: mongoose.Types.ObjectId;
+export class Contrato extends Entity {
     informacoesLegais: String;
     numeroDocumento: Number;
     numeroLei: Number;
     taxa: Number;
     compromisso: String;
     data: Date;
-    atleta: IAtleta;
-    advogado: IAdvogado;
+    atleta: Atleta;
+    advogado: Advogado;
+
+    constructor(informacoesLegais: String, numeroDocumento: Number, numeroLei: Number,
+                taxa: Number, compromisso: String, data: Date){
+        super();
+        this.informacoesLegais = informacoesLegais;
+        this.numeroDocumento = numeroDocumento;
+        this.numeroLei = numeroLei;
+        this.taxa = taxa;
+        this.compromisso = compromisso;
+        this.data = data;
+    }
+
 }
-
-let contratoSchema = new mongoose.Schema({
-    informacoesLegais: { type: String, required: true },
-    numeroDocumento: { type: Number, required: true },
-    numeroLei: { type: Number, required: true },
-    taxa: { type: Number, required: true },
-    compromisso: { type: String, required: true },
-    data: { type: Date, required: true },
-    atleta: { type: mongoose.Schema.Types.ObjectId, ref: 'Atleta' },
-    advogado: { type: mongoose.Schema.Types.ObjectId, ref: 'Advogado' }
-});
-
-export let Contrato = mongoose.model<IContrato>('Contrato', contratoSchema);
