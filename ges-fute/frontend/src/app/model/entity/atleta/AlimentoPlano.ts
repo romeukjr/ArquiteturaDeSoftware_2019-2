@@ -1,29 +1,18 @@
-import * as mongoose from 'mongoose';
+import { Time } from '@angular/common';
+import { Entity } from '../../entity';
 
-export interface IAlimentoPlano extends mongoose.Document{
-    _id: mongoose.Types.ObjectId;
+export class AlimentoPlano extends Entity {
     alimento: String;
-    horaAlimento: Number;
-    minutoAlimento: Number;
+    horario: Time;
     quantidade: Number;
     unidadeMedida: String;
-}
 
-let alimentoPlanoSchema = new mongoose.Schema({
-    alimento: { type: String, required: true},
-    horaAlimento: { type: Number, required: true},
-    minutoAlimento: { type: Number, required: true},
-    quantidade: { type: Number, required: true},
-    unidadeMedida: { type: String, required: true}
-});
+    constructor(alimento: String, horario: Time, quantidade: Number, unidadeMedida: String){
+        super();
+        this.alimento = alimento;
+        this.horario = horario;
+        this.quantidade = quantidade;
+        this.unidadeMedida = unidadeMedida;
+    }
 
-export let AlimentoPlanoModel = mongoose.model<IAlimentoPlano>('AlimentoPlano', alimentoPlanoSchema);
-
-export class AlimentoPlano{
-    _id: mongoose.Types.ObjectId;
-    alimento: String;
-    horaAlimento: Number;
-    minutoAlimento: Number;
-    quantidade: Number;
-    unidadeMedida: String;
 }

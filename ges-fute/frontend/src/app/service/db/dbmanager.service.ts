@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { AlimentoPlanoModel, AlimentoPlano } from '../../model/entity/atleta/AlimentoPlano';
-import { AvaliacaoDesempenhoModel, AvaliacaoMedicaModel } from '../../model/entity/atleta/Avaliacao';
-import { PlanoAlimentarModel } from '../../model/entity/atleta/PlanoAlimentar';
-import { AtletaModel } from '../../model/entity/atleta/Atleta';
+import { AlimentoPlano } from '../../model/entity/atleta/AlimentoPlano';
+import { AvaliacaoMedica } from '../../model/entity/atleta/Avaliacao';
+import { PlanoAlimentar } from '../../model/entity/atleta/PlanoAlimentar';
+import { Atleta } from '../../model/entity/atleta/Atleta';
 import { DBService } from './db.service';
 import constants from '../../util/constants';
 

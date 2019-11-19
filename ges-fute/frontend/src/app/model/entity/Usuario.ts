@@ -1,26 +1,25 @@
-import * as mongoose from 'mongoose';
+import { Entity } from '../entity';
 
-export interface IUsuario extends mongoose.Document{
-    _id: mongoose.Types.ObjectId;
+export class Usuario extends Entity{
     usuario: String;
     senha: String;
     nome: String;
     dataNascimento: Date;
-    email: string;
-    endereco: string;
-    CPF: string;
-    RG: string;
+    email: String;
+    endereco: String;
+    CPF: String;
+    RG: String;
+
+    constructor(usuario: String, senha: String, nome: String, dataNascimento: Date,
+                email: String, endereco: String, CPF: String, RG: string){
+        super();
+        this.usuario = usuario;
+        this.senha = senha;
+        this.nome = nome;
+        this.dataNascimento = dataNascimento;
+        this.email = email;
+        this.endereco = endereco;
+        this.CPF = CPF;
+        this.RG = RG;
+    }
 }
-
-let usuarioSchema = new mongoose.Schema({
-    usuario: { type: String, required: true},
-    senha: { type: String, required: true},
-    nome: { type: String, required: true},
-    dataNascimento: { type: Date, required: true },
-    email: { type: String, required: true},
-    endereco: { type: String, required: true},
-    CPF: { type: String, required: true},
-    RG: { type: String, required: true}
-});
-
-export let Usuario = mongoose.model<IUsuario>('Usuario', usuarioSchema);

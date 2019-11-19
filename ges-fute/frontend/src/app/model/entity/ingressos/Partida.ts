@@ -1,16 +1,14 @@
-import * as mongoose from 'mongoose';
+import { Entity } from '../../entity';
 
-export interface IPartida extends mongoose.Document {
-    _id: mongoose.Types.ObjectId;
+export class Partida extends Entity {
     adversario: String;
     campeonato: String;
     data: Date;
+
+    constructor(adversario: String, campeonato: String, data: Date){
+        super();
+        this.adversario = adversario;
+        this.campeonato = campeonato;
+        this.data = data;
+    }
 }
-
-let partidaSchema = new mongoose.Schema({
-    adversario: { type: String, required: true },
-    campeonato: { type: String, required: true },
-    data: { type: Date, required: Date }
-});
-
-export let Partida = mongoose.model<IPartida>('Partida', partidaSchema);
