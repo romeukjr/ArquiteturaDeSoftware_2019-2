@@ -1,4 +1,4 @@
-var PlanoAlimentar = require('../../model/Atleta/planoAlimentar');
+var PlanoAlimentar = require('../../model/Atleta/planoAlimentarModel');
 
 module.exports = function (router) {
     //(http://localhost:8080/api/planos_alimentares)

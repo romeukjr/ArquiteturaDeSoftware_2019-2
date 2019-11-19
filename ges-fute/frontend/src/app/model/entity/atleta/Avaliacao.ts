@@ -1,64 +1,30 @@
-import { IUsuario, Usuario } from '../Usuario';
+import { Usuario } from '../Usuario';
+import { Entity } from '../../entity';
 
-import * as mongoose from 'mongoose';
-
-interface IAvaliacao extends mongoose.Document{
-    _id: mongoose.Types.ObjectId;
+abstract class Avaliacao extends Entity{
     data: Date;
-    responsavel: IUsuario;
+    responsavel: Usuario;
     peso: Number;
-}
 
-//Avaliacao Desempenho
-export interface IAvaliacaoDesempenho extends IAvaliacao{
-    tempoJogo: Number;
-    percentualGordura: Number;
-    velocidadeMedia: Number;
-}
+    constructor(data: Date, responsavel: Usuario, peso: number){
+        super()
+        this.data = data;
+        this.responsavel = responsavel;
+    }
 
-let avaliacaoDesempenhoSchema = new mongoose.Schema({
-    data: { type: Date, required: true},
-    responsavel: {type: mongoose.Types.ObjectId, ref: 'Usuario'},
-    peso: { type: Number, required: true },
-    tempoJogo: { type: Number, required: true },
-    percentualGordura: { type: Number, required: true },
-    velocidadeMedia: { type: Number, required: true }
-});
-
-export let AvaliacaoDesempenhoModel = mongoose.model<IAvaliacaoDesempenho>('AvaliacaoDesempenho', avaliacaoDesempenhoSchema);
-
-// AvaliacaoMedica
-export interface IAvaliacaoMedica extends IAvaliacao{
-    temperaturaCorporal: Number;
-    pressao: Number;
-    batimentosCardiacos: Number;
-    lesao: String;
-}
-
-let avaliacaoMedicaSchema = new mongoose.Schema({
-    data: { type: Date, required: true},
-    responsavel: {type: mongoose.Types.ObjectId, ref: 'Usuario'},
-    peso: { type: Number, required: true },
-    temperaturaCorporal: { type: Number, required: true },
-    pressao: { type: Number, required: true },
-    batimentosCardiacos: { type: Number, required: true },
-    lesao: { type: String, required: true },
-});
-
-export let AvaliacaoMedicaModel = mongoose.model<IAvaliacaoMedica>('AvaliacaoMedica', avaliacaoMedicaSchema);
-
-
-// classes
-class Avaliacao{
-    _id: mongoose.Types.ObjectId;
-    data: Date;
-    //responsavel: Usuario;
-    peso: Number;
 }
 export class AvaliacaoDesempenho extends Avaliacao{
     tempoJogo: Number;
     percentualGordura: Number;
     velocidadeMedia: Number;
+
+    constructor(data: Date, responsavel: Usuario, peso: number, 
+        tempoJogo: number, percentualGordura: number, velocidadeMedia: number){
+        super(data, responsavel, peso);
+        this.tempoJogo = tempoJogo;
+        this.percentualGordura = percentualGordura;
+        this.velocidadeMedia = velocidadeMedia;
+    }
 }
 
 export class AvaliacaoMedica extends Avaliacao{
@@ -66,4 +32,14 @@ export class AvaliacaoMedica extends Avaliacao{
     pressao: Number;
     batimentosCardiacos: Number;
     lesao: String;
+
+    constructor(data: Date, responsavel: Usuario, peso: number, 
+        temperaturaCorporal: number, pressao: number, batimentosCardiacos: number,
+        lesao: string){
+        super(data, responsavel, peso);
+        this.temperaturaCorporal = temperaturaCorporal;
+        this.pressao = pressao;
+        this.batimentosCardiacos = batimentosCardiacos;
+        this.lesao = lesao;
+    }
 }

@@ -1,15 +1,11 @@
-import  { IUsuario } from '../Usuario';
-import * as mongoose from 'mongoose';
+import  { Usuario } from '../Usuario';
 
-export interface IAdvogado extends mongoose.Document {
-    _id: mongoose.Types.ObjectId;
-    usuario: IUsuario;
+export class Advogado extends Usuario {
     carteiraOAB: String;
+
+    constructor(usuario: String, senha: String, nome: String, dataNascimento: Date,
+        email: String, endereco: String, CPF: String, RG: string, carteiraOAB: String){
+        super(usuario, senha, nome, dataNascimento, email, endereco, CPF, RG);
+        this.carteiraOAB = carteiraOAB;
+    }
 }
-
-let advogadoSchema = new mongoose.Schema({
-    usuario: { type: mongoose.Schema.Types.ObjectId, ref: 'Usuario'},
-    carteiraOAB: { type: String, required: true }
-});
-
-export let Advogado = mongoose.model<IAdvogado>('Advogado', advogadoSchema);

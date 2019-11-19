@@ -1,18 +1,14 @@
-import * as mongoose from 'mongoose';
-import { IPartida } from './Partida';
-import { IUsuario } from '../Usuario';
+import { Partida } from './Partida';
+import { Usuario } from '../Usuario';
+import { Entity } from '../../entity';
 
-export interface IIngressoPartida extends mongoose.Document {
-    _id: mongoose.Types.ObjectId;
+export class IngressoPartida extends Entity {
     cadeira: String;
-    partida: IPartida;
-    usuario: IUsuario;
+    partida: Partida;
+    usuario: Usuario;
+
+    constructor (cadeira: string){
+        super();
+        this.cadeira = cadeira;
+    }
 }
-
-let ingressoPartidaSchema = new mongoose.Schema({
-    cadeira: { type: Number, required: true },
-    usuario: { type: mongoose.Schema.Types.ObjectId, ref: 'Usuario' },
-    partida: { type: mongoose.Schema.Types.ObjectId, ref: 'Partida' }
-});
-
-export let IngressoPartida = mongoose.model<IIngressoPartida>('IngressoPartida', ingressoPartidaSchema);

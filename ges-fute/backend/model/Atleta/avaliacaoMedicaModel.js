@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 
 var avaliacaoMedicaSchema = new mongoose.Schema({
     data: { type: Date, required: true},
-    responsavel: {type: mongoose.Types.ObjectId, ref: 'Usuario'},
+    responsavel: {type: mongoose.Schema.Types.ObjectId, ref: 'Usuario'},
     peso: { type: Number, required: true },
     temperaturaCorporal: { type: Number, required: true },
     pressao: { type: Number, required: true },

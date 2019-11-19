@@ -1,27 +1,27 @@
-var AvaliacaoDesempenho = require('../../model/Atleta/avaliacaoMedicaDesempenho');
+var AvaliacaoDesempenho = require('../../model/Atleta/avaliacaoDesempenhoModel');
 
 module.exports = function (router) {
     //(http://localhost:8080/api/avaliacoes_desempenho)
     router.route('/avaliacoes_desempenho')
         .post(function(request, response) {
-            var avaliacaoMedicaData = request.body;
-            var avaliacaoMedica = new AvaliacaoMedica();
-            avaliacaoMedica.data = avaliacaoMedicaData.data;
-            avaliacaoMedica.responsavel = avaliacaoMedicaData.responsavel;
-            avaliacaoMedica.peso = avaliacaoMedicaData.peso;
-            avaliacaoMedica.tempoJogo = avaliacaoMedicaData.tempoJogo;
-            avaliacaoMedica.percentualGordura = avaliacaoMedicaData.percentualGordura;
-            avaliacaoMedica.velocidadeMedia = avaliacaoMedicaData.velocidadeMedia;
+            var avaliacaoDesempenhoData = request.body;
+            var avaliacaoDesempenho = new AvaliacaoDesempenho();
+            avaliacaoDesempenho.data = avaliacaoDesempenhoData.data;
+            avaliacaoDesempenho.responsavel = avaliacaoDesempenhoData.responsavel;
+            avaliacaoDesempenho.peso = avaliacaoDesempenhoData.peso;
+            avaliacaoDesempenho.tempoJogo = avaliacaoDesempenhoData.tempoJogo;
+            avaliacaoDesempenho.percentualGordura = avaliacaoDesempenhoData.percentualGordura;
+            avaliacaoDesempenho.velocidadeMedia = avaliacaoDesempenhoData.velocidadeMedia;
             
-            avaliacaoMedica.save(function(err) {
+            avaliacaoDesempenho.save(function(err) {
                 if (err)
                     response.send(err);
 
-                response.json({ message: 'AvaliacaoMedica criado com sucesso!' });
+                response.json({ message: 'AvaliacaoDesempenho criado com sucesso!' });
             });            
         })
         .get(function(request, response) {
-            AvaliacaoMedica.find(function(err, avaliacoesMedicas) {
+            AvaliacaoDesempenho.find(function(err, avaliacoesMedicas) {
                 if (err)
                     response.send(err);
 
@@ -32,43 +32,43 @@ module.exports = function (router) {
     // (accessed at POST http://localhost:8080/api/avaliacoes_desempenho/:avaliacao_desempenho_id)
     router.route('/avaliacoes_desempenho/:avaliacao_desempenho_id')
         .get(function(request, response) {
-            AvaliacaoMedica.findById(request.params.avaliacoes_desempenhos_id, function(err, avaliacaoMedica) {
+            AvaliacaoDesempenho.findById(request.params.avaliacoes_desempenhos_id, function(err, avaliacaoDesempenho) {
                 if (err)
                     response.send(err);
-                response.json(avaliacaoMedica);
+                response.json(avaliacaoDesempenho);
             });
         })
         .put(function(request, response) {
-            AvaliacaoMedica.findById(request.params.avaliacoes_desempenhos_id, function(err, avaliacaoMedica) {
+            AvaliacaoDesempenho.findById(request.params.avaliacoes_desempenhos_id, function(err, avaliacaoDesempenho) {
 
                 if (err)
                     response.send(err);
 
-                var avaliacaoMedicaData = request.body;
-                avaliacaoMedica.data = avaliacaoMedicaData.data;
-                avaliacaoMedica.responsavel = avaliacaoMedicaData.responsavel;
-                avaliacaoMedica.peso = avaliacaoMedicaData.peso;
-                avaliacaoMedica.tempoJogo = avaliacaoMedicaData.tempoJogo;
-                avaliacaoMedica.percentualGordura = avaliacaoMedicaData.percentualGordura;
-                avaliacaoMedica.velocidadeMedia = avaliacaoMedicaData.velocidadeMedia;
+                var avaliacaoDesempenhoData = request.body;
+                avaliacaoDesempenho.data = avaliacaoDesempenhoData.data;
+                avaliacaoDesempenho.responsavel = avaliacaoDesempenhoData.responsavel;
+                avaliacaoDesempenho.peso = avaliacaoDesempenhoData.peso;
+                avaliacaoDesempenho.tempoJogo = avaliacaoDesempenhoData.tempoJogo;
+                avaliacaoDesempenho.percentualGordura = avaliacaoDesempenhoData.percentualGordura;
+                avaliacaoDesempenho.velocidadeMedia = avaliacaoDesempenhoData.velocidadeMedia;
                 
-                avaliacaoMedica.save(function(err) {
+                avaliacaoDesempenho.save(function(err) {
                     if (err)
                         response.send(err);
 
-                    response.json({ message: 'AvaliacaoMedica atualizado com sucesso!' });
+                    response.json({ message: 'AvaliacaoDesempenho atualizado com sucesso!' });
                 });
 
             });
         })
         .delete(function(request, response) {
-            AvaliacaoMedica.remove({
+            AvaliacaoDesempenho.remove({
                 _id: request.params.avaliacoes_desempenhos_id
-            }, function(err, avaliacaoMedica) {
+            }, function(err, avaliacaoDesempenho) {
                 if (err)
                     response.send(err);
 
-                response.json({ message: 'AvaliacaoMedica excluído com sucesso!' });
+                response.json({ message: 'AvaliacaoDesempenho excluído com sucesso!' });
             });
         });
 }

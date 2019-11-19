@@ -3,7 +3,7 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { IJsonGenerator } from '../../model/ijson-generator';
-import constants from 'src/app/util/constants';
+import constants from '../../util/constants';
 
 @Injectable({
   providedIn: 'root'
