@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { IAtleta } from '../..//model/entity/atleta/Atleta';
 import { Atleta } from  '../../model/entity/atleta/Atleta';
 import { headersToString } from 'selenium-webdriver/http';
 
@@ -17,21 +16,16 @@ export class ListAtletaComponent implements OnInit {
   }
 
   getAtletas(): void {
-    let atleta = new Atleta();
-
-    atleta.nome = 'teste';
-    
     // mocking objects
     this.atletas = [
-      atleta
-      //new Atleta({ nome: 'Bruno Führ', idade: 22, altura: 1.8, alergias: 'medicamentos'}),
-      //new Atleta({ nome: 'Ronaldo', idade: 39, altura: 1.7, alergias: ''}),
-      //new Atleta({ nome: 'Romario', idade: 43, altura: 1.61, alergias: 'Camarão'})
+      new Atleta('Bruno Führ', 22, 1.8, 'medicamentos'),
+      new Atleta('Ronaldo', 39, 1.7, ''),
+      new Atleta('Romario', 43, 1.61, 'Camarão')
 
     ];
   }
 
-  delete(atleta: IAtleta){
+  delete(atleta: Atleta){
     
   }
 

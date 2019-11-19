@@ -1,7 +1,7 @@
 
 import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
-import { IAtleta } from '../../model/entity/atleta/Atleta';
+import { Atleta } from '../../model/entity/atleta/Atleta';
 import { Location } from '@angular/common';
 
 @Component({
@@ -10,7 +10,7 @@ import { Location } from '@angular/common';
   styleUrls: ['./mantain-atleta.component.css']
 })
 export class MantainAtletaComponent implements OnInit {
-  @Input() atleta: IAtleta;
+  @Input() atleta: Atleta;
   
   constructor(private location: Location) { }
 
