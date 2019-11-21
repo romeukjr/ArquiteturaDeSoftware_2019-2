@@ -28,7 +28,7 @@ export class PlanoAlimentar extends Entity{
         this.alimentosPlano = new Array();
     }
 
-    addAlimento(alimento: String, horario: Time, quantidade: Number, unidadeMedida: String){
-        this.alimentosPlano.push(new AlimentoPlano(alimento, horario, quantidade, unidadeMedida));
+    addAlimento(alimento: String, horaAlimento: Number, minutoAlimento: Number, quantidade: Number, unidadeMedida: String){
+        this.alimentosPlano.push(new AlimentoPlano(alimento, horaAlimento, minutoAlimento, quantidade, unidadeMedida));
     }
 }
