@@ -3,14 +3,16 @@ import { Entity } from '../../entity';
 
 export class AlimentoPlano extends Entity {
     alimento: String;
-    horario: Time;
+    horaAlimento: Number;
+    minutoAlimento: Number;
     quantidade: Number;
     unidadeMedida: String;
 
-    constructor(alimento: String, horario: Time, quantidade: Number, unidadeMedida: String){
+    constructor(alimento: String, horaAlimento: Number, minutoAlimento: Number, quantidade: Number, unidadeMedida: String){
         super();
         this.alimento = alimento;
-        this.horario = horario;
+        this.horaAlimento = horaAlimento;
+        this.minutoAlimento = minutoAlimento;
         this.quantidade = quantidade;
         this.unidadeMedida = unidadeMedida;
     }

@@ -9,7 +9,13 @@ const constants = {
         ATLETA: "/atletas",
         AVALIACAO_DESEMPENHO: "/avaliacoes_desempenho",
         AVALIACAO_MEDICA: "/avaliacoes_medicas",
-        PLANO_ALIMENTO: "/planos_alimentares"
+        PLANO_ALIMENTO: "/planos_alimentares",
+        USUARIO: "/usuario",
+        PARTIDA: "/partida",
+        INGRESSO_PARTIDA: "/ingressos",
+        ADVOGADO: "/advogado",
+        CONTRATO: "/contrato",
+        OUVIDORIA: "/ouvidoria"
     }
 };
 

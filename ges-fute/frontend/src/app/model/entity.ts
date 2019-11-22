@@ -8,4 +8,8 @@ export abstract class Entity {
     getId(): any{
         return this._id   
     }
+
+    toJson():any{
+        return JSON.stringify(this);
+    }
 }
