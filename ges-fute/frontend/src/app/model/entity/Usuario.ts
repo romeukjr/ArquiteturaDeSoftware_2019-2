@@ -21,5 +21,7 @@ export class Usuario extends Entity{
         this.endereco = endereco;
         this.CPF = CPF;
         this.RG = RG;
+
+        dataNascimento.toJSON;
     }
 }

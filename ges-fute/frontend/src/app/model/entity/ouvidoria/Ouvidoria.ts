@@ -3,7 +3,7 @@ import { Entity } from '../../entity';
 
 // ao exportar JSON colocar tipo para identificar o tipo do chamado
 
-abstract class Chamado extends Entity {
+export abstract class Chamado extends Entity {
     descricao: String;
     prioridade: Number;
     usuario: Usuario;

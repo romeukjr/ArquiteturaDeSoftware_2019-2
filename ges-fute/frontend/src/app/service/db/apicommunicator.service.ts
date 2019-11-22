@@ -2,20 +2,20 @@ import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { IJsonGenerator } from '../../model/ijson-generator';
 import constants from '../../util/constants';
+import { Entity } from 'src/app/model/entity';
 
 @Injectable({
   providedIn: 'root'
 })
-export class APICommunicatorService<T extends IJsonGenerator> {
+export class APICommunicatorService<T extends Entity> {
   protected URL = constants.API.URL;
   
   constructor(private http: Http) {}
 
   public create(object: T, request?: String): void {
       const requestUrl = this.URL + request;
-      const body = object.json();
+      const body = object.toJson();
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       let options = new RequestOptions({ headers : headers});
