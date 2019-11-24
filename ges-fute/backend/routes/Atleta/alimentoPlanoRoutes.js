@@ -28,7 +28,7 @@ module.exports = function (router) {
             });
         });
 
-    // (accessed at POST http://localhost:8080/api/alimento_planos/:alimento_plano_id)
+    // (http://localhost:8080/api/alimento_planos/:alimento_plano_id)
     router.route('/alimento_planos/:alimento_plano_id')
         .get(function(request, response) {
             AlimentoPlano.findById(request.params.alimento_plano_id, function(err, alimentoPlano) {

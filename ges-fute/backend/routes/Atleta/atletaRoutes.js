@@ -39,7 +39,7 @@ module.exports = function (router) {
             });
         });
 
-    // (accessed at POST http://localhost:8080/api/atletas/:atleta_id)
+    // (http://localhost:8080/api/atletas/:atleta_id)
     router.route('/atletas/:atleta_id')
         .get(function(request, response) {
             Atleta.findById(request.params.atleta_id, function(err, atleta) {

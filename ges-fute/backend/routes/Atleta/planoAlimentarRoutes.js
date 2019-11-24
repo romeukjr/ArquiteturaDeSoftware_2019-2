@@ -32,7 +32,7 @@ module.exports = function (router) {
             });
         });
 
-    // (accessed at POST http://localhost:8080/api/planos_alimentares/:planos_alimentares_id)
+    // (http://localhost:8080/api/planos_alimentares/:planos_alimentares_id)
     router.route('/planos_alimentares/:planos_alimentares_id')
         .get(function(request, response) {
             PlanoAlimentar.findById(request.params.planos_alimentares_id, function(err, planoAlimentar) {
