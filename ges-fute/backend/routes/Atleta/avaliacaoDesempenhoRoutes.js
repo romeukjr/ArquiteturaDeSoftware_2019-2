@@ -29,7 +29,7 @@ module.exports = function (router) {
             });
         });
 
-    // (accessed at POST http://localhost:8080/api/avaliacoes_desempenho/:avaliacao_desempenho_id)
+    // (http://localhost:8080/api/avaliacoes_desempenho/:avaliacao_desempenho_id)
     router.route('/avaliacoes_desempenho/:avaliacao_desempenho_id')
         .get(function(request, response) {
             AvaliacaoDesempenho.findById(request.params.avaliacoes_desempenhos_id, function(err, avaliacaoDesempenho) {

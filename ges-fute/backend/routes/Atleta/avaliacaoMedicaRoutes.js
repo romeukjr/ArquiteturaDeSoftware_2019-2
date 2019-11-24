@@ -30,7 +30,7 @@ module.exports = function (router) {
             });
         });
 
-    // (accessed at POST http://localhost:8080/api/avaliacoes_medicas/:avaliacao_medica_id)
+    // (http://localhost:8080/api/avaliacoes_medicas/:avaliacao_medica_id)
     router.route('/avaliacoes_medicas/:avaliacao_medica_id')
         .get(function(request, response) {
             AvaliacaoMedica.findById(request.params.avaliacoes_medicas_id, function(err, avaliacaoMedica) {
