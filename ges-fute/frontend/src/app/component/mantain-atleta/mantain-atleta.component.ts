@@ -3,6 +3,9 @@ import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { Atleta } from '../../model/entity/atleta/Atleta';
 import { Location } from '@angular/common';
+import { ActivatedRoute, Router } from '@angular/router';
+import { DBManagerService } from 'src/app/service/db/dbmanager.service';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-mantain-atleta',
@@ -10,15 +13,17 @@ import { Location } from '@angular/common';
   styleUrls: ['./mantain-atleta.component.css']
 })
 export class MantainAtletaComponent implements OnInit {
-  @Input() atleta: Atleta;
+  atleta: Atleta;
   
-  constructor(private location: Location) { }
+  constructor(private DBManager: DBManagerService, public matDialog: MatDialog) { }
 
   ngOnInit() {
+    this.getAtleta();
   }
 
-  goBack(): void {
-    this.location.back();
+  getAtleta(){
+    const id = history.state.id;
+    this.atleta = this.DBManager.atleta.findById(id);
   }
 
 }

@@ -2,8 +2,9 @@
 
 <ul class="atleta">
     <li *ngFor="let atleta of atletas">
-        <a routerLink="/mantain-atleta/{{atleta._id}}">
-            <span class="badge">{{atleta._id}}</span> {{atleta.nome}}
+        <a routerLink="/mantain-atleta/"
+            state="{ id:{{atleta.getId()}}}">
+            <span class="badge">{{atleta.getId()}}</span> {{atleta.nome}}
         </a>
         <button class="delete" title="deletar atleta"
              (click)="delete(atleta)">x</button>

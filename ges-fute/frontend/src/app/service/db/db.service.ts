@@ -49,4 +49,9 @@ export class DBService<T extends Entity> {
         }
         return register;
     }
+
+    public delete(id: any) {
+        this.apiCommunicatorService.delete(this.REQUEST_URL + '/' + id);
+        this.registers.splice(this.registers.indexOf(this.findById(id)));
+    }
 }
