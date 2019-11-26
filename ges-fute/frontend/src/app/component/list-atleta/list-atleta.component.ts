@@ -22,9 +22,10 @@ export class ListAtletaComponent implements OnInit {
   }
 
   getAtletas(): void {
-    this.DBManager.atleta.getAllRegisters().subscribe((data: Atleta[]) => {
+    this.atletas = this.DBManager.atleta.registers;
+    /*this.DBManager.atleta.getAllRegisters().subscribe((data: Atleta[]) => {
         this.atletas =  data;
-    });
+    });*/
   }
 
   delete(atleta: Atleta){

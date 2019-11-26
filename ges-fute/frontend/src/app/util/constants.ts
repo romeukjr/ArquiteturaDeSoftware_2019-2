@@ -4,7 +4,7 @@ const constants = {
         URL: "http://localhost:4200"
     },
     API: {
-        URL: "/api",
+        URL: "localhost:8080/api",
         ALIMENTO_PLANO: "/alimento_planos",
         ATLETA: "/atletas",
         AVALIACAO_DESEMPENHO: "/avaliacoes_desempenho",

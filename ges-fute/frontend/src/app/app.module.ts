@@ -1,5 +1,8 @@
 import { FormsModule } from '@angular/forms'
 
+import { HttpModule } from '@angular/http';
+import { MatDialogModule } from '@angular/material/dialog'
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -19,7 +22,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
