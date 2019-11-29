@@ -16,4 +16,13 @@ export abstract class Entity {
     buildFromJSON(json: any){
         this._id = json._id;
     }
+   
+}
+
+export function getJsonEntityIdArray(array: Entity[]): any[]{
+    let ids = [];
+    array.forEach(element => {
+       ids.push(element.getId());
+    });
+    return ids;
 }

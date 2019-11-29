@@ -18,8 +18,8 @@ export class AvaliacaoDesempenho extends Avaliacao{
     percentualGordura: Number;
     velocidadeMedia: Number;
 
-    constructor(data: Date, responsavel: Usuario, peso: number, 
-        tempoJogo: number, percentualGordura: number, velocidadeMedia: number){
+    constructor(data?: Date, responsavel?: Usuario, peso?: number, 
+        tempoJogo?: number, percentualGordura?: number, velocidadeMedia?: number){
         super(data, responsavel, peso);
         this.tempoJogo = tempoJogo;
         this.percentualGordura = percentualGordura;
@@ -33,9 +33,9 @@ export class AvaliacaoMedica extends Avaliacao{
     batimentosCardiacos: Number;
     lesao: String;
 
-    constructor(data: Date, responsavel: Usuario, peso: number, 
-        temperaturaCorporal: number, pressao: number, batimentosCardiacos: number,
-        lesao: string){
+    constructor(data?: Date, responsavel?: Usuario, peso?: number, 
+        temperaturaCorporal?: number, pressao?: number, batimentosCardiacos?: number,
+        lesao?: string){
         super(data, responsavel, peso);
         this.temperaturaCorporal = temperaturaCorporal;
         this.pressao = pressao;
