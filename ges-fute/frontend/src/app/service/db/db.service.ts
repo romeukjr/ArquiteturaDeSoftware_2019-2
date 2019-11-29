@@ -22,7 +22,12 @@ export class DBService<T extends Entity> {
 
     public async getAllRegisters() {
         let observer = await this.apiCommunicatorService.getDataCollection(this.REQUEST_URL);
-        await observer.subscribe((data: T[]) => {
+        await observer.subscribe((data: any[]) => {
+            // verificar como transformar o json no objeto
+            data.forEach((value: any) => {
+                this.registers.push(JSON.parse(value)) 
+            });
+            
             this.registers =  data;
         });
         return observer;

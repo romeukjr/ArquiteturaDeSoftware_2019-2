@@ -22,10 +22,12 @@ export class ListAtletaComponent implements OnInit {
   }
 
   getAtletas(): void {
-    this.atletas = this.DBManager.atleta.registers;
-    /*this.DBManager.atleta.getAllRegisters().subscribe((data: Atleta[]) => {
-        this.atletas =  data;
-    });*/
+    //this.atletas = this.DBManager.atleta.registers;
+    this.DBManager.atleta.getAllRegisters().then(observer => {
+      observer.subscribe((data: Atleta[]) => {
+        this.atletas = data;
+      })
+    });
   }
 
   delete(atleta: Atleta){

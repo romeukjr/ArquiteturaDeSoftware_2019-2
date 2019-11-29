@@ -12,4 +12,8 @@ export abstract class Entity {
     toJson():any{
         return JSON.stringify(this);
     }
+
+    buildFromJSON(json: any){
+        this._id = json._id;
+    }
 }
