@@ -35,5 +35,5 @@ require('./routes/routes')(app); // configure our routes
 
 // START THE SERVER
 // =============================================================================
-app.listen(port);
 console.log('GesFute API - Running on port ' + port);
+app.listen(port);

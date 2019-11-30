@@ -12,4 +12,17 @@ export abstract class Entity {
     toJson():any{
         return JSON.stringify(this);
     }
+
+    buildFromJSON(json: any){
+        this._id = json._id;
+    }
+   
+}
+
+export function getJsonEntityIdArray(array: Entity[]): any[]{
+    let ids = [];
+    array.forEach(element => {
+       ids.push(element.getId());
+    });
+    return ids;
 }

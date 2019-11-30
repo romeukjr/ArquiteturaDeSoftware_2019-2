@@ -1,0 +1,25 @@
+<div *ngIf="atleta">
+    <h2>Alteração dos dados do Atleta</h2>
+    <div *ngIf="atleta._id"> <span>id: </span> {{atleta._id}} </div>
+    <!--<h2 *ngIf="atleta.nome">Nome: {{atleta.nome}} </h2> -->
+    <label> nome:  
+        <input [(ngModel)]="atleta.nome"
+            placeholder="nome"/>
+    </label>
+    <label> idade: 
+        <input [(ngModel)]="atleta.idade"
+            placeholder="idade"/>
+    </label>
+    <label> altura: 
+            <input [(ngModel)]="atleta.altura"
+                placeholder="altura"/>
+    </label>
+    <label> alergias: 
+            <input [(ngModel)]="atleta.alergias"
+                placeholder="alergias"/>
+    </label>
+        
+    <!-- botões de chamada de avaliação médica, de desempenho e plano alimentar-->    
+    <button (click)="goBack()"> Cancelar </button>
+    <button (click)="save()"> Salvar </button>
+</div>

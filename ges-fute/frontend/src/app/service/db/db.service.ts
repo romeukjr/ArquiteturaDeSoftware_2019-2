@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
-import 'rxjs/add/operator/map';
+//import 'rxjs/add/operator/map';
 import { APICommunicatorService } from './apicommunicator.service';
 import { Entity } from 'src/app/model/entity';
 
@@ -22,7 +22,12 @@ export class DBService<T extends Entity> {
 
     public async getAllRegisters() {
         let observer = await this.apiCommunicatorService.getDataCollection(this.REQUEST_URL);
-        await observer.subscribe((data: T[]) => {
+        await observer.subscribe((data: any[]) => {
+            // verificar como transformar o json no objeto
+            data.forEach((value: any) => {
+                this.registers.push(JSON.parse(value)) 
+            });
+            
             this.registers =  data;
         });
         return observer;
@@ -48,5 +53,10 @@ export class DBService<T extends Entity> {
             register = this.registers.find((u) => u.getId() == id);
         }
         return register;
+    }
+
+    public delete(id: any) {
+        this.apiCommunicatorService.delete(this.REQUEST_URL + '/' + id);
+        this.registers.splice(this.registers.indexOf(this.findById(id)));
     }
 }

@@ -1,6 +1,6 @@
 import { AvaliacaoDesempenho, AvaliacaoMedica } from './Avaliacao';
 import { PlanoAlimentar } from './PlanoAlimentar';
-import { Entity } from '../../entity';
+import { Entity, getJsonEntityIdArray } from '../../entity';
 import { Usuario } from '../Usuario';
 
 export class Atleta extends Entity {
@@ -45,5 +45,29 @@ export class Atleta extends Entity {
                                     qtdMacronutrientes));
     }
 
+    toJSon(){
+        return { 
+            _id: this.getId(),
+            nome: this.nome,
+            idade: this.idade,
+            altura: this.altura,
+            alergias: this.alergias,
+            avaliacoesMedicas: getJsonEntityIdArray(this.avaliacoesMedicas),
+            avaliacoesDesempenho: getJsonEntityIdArray(this.avaliacoesDesempenho),
+            planosAlimentares: getJsonEntityIdArray(this.planosAlimentares)
+        }
+    }
+
+    buildFromJSON(json: any){
+        super.buildFromJSON(json);
+        this.nome = json.nome;
+        this.idade = json.idade;
+        this.altura = json.altura;
+        this.alergias = json.alergias;
+        /*json.avaliacoesMedicas.forEach(element => {
+            let avaliacao = new AvaliacaoMedica().setId(element);
+            this.avaliacoesMedicas.push(avaliacao);
+        });*/
+    }
     
 }
